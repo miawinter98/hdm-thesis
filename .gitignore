@@ -1,0 +1,7 @@
+# compiled files
+**/*.pdf
+.fleet/*.json
+template/fonts/*
+
+# MacOS specific files (Apple sucks)
+.DS_Store
