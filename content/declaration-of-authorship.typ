@@ -1,4 +1,4 @@
-#let declaration-of-auhtorship(authors, title, location, date) = [
+#let declaration-of-authorship(authors, title, location, date) = [
   = Ehrenwörtliche Erklärung
 
   #if authors.len() == 1 { "Hiermit versichere ich" } else { "Hiermit versichern wir" },

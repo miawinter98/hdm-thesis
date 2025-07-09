@@ -1,7 +1,7 @@
 #import "@preview/glossarium:0.5.4": make-glossary, register-glossary, print-glossary, gls, glspl
 
 #import "content/titlepage.typ": titlepage
-#import "content/declaration-of-auhtorship.typ": declaration-of-auhtorship
+#import "content/declaration-of-authorship.typ": declaration-of-authorship
 
 #let hdm-thesis(
     metadata, date, content,
@@ -74,7 +74,7 @@
 
     set par(justify: true)
 
-    declaration-of-auhtorship(
+    declaration-of-authorship(
         data.authors.map(a => a.Name),
         data.title + ": " + data.subtitle,
         layout.Location, date)
