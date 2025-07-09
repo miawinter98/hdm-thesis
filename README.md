@@ -2,18 +2,28 @@
 
 Unofficial [typst](https://typst.app/) template for Hochschule der Medien Stuttgart (Stuttgart Media Univerisity). Inspired by the Template by Prof. Dr. Dirk Heuzeroth 
 
-## Contributing
-
-If there is any change to the template by Prof. Dr. Heuzeroth or requirements generally please open an issue or submitt them as a pull request. If there is something you are missing or would like to customize but can't please open an issue.
+The template supports both Bachelors and Masters, as well as German and English languages.
 
 ## Usage
 
-TODO
+You can add basic information such as language, contributors, title, etc. in the metadata.yaml file.
 
-## Configuration
+In the main file, you will need this:
 
-TODO
+```typst
+#import "@preview/hdm-thesis:0.1.0": hdm-thesis
+#import "@preview/glossarium:0.5.4": gls, glspl
 
-## Typst tricks
+#import "glossary.typ": glossary
 
-TODO explain fonts and the likes
+#let metadata = yaml("metadata.yaml")
+
+#show: hdm-thesis.with(
+    metadata, datetime(year: 2025, month: 8, day: 1),
+    bib: bibliography("sources.bib"),
+    glossary: glossary)
+```
+
+You should edit the date to be your submission date, or just use datetime.today() (the default in the template).
+
+All content you add after that is considered part of the thesis and will be added to the Table of Contents.
