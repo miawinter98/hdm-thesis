@@ -12,6 +12,7 @@ de:
         Figures: "Abbildungsverzeichnis"
         Tables: "Tabellenverzeichnis"
         Glossary: "Glossar"
+        Acronyms: "Abkürzungen"
 en:
     titlepage:
         SubmittedBy: "submitted by\n"
@@ -26,3 +27,4 @@ en:
         Figures: "Figures"
         Tables: "Tables"
         Glossary: "Glossary"
+        Acronyms: "Acronyms"

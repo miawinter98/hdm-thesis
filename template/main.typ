@@ -1,6 +1,7 @@
 #import "@preview/hdm-thesis:0.1.0": hdm-thesis
 #import "@preview/glossarium:0.5.4": gls, glspl
 
+#import "acronyms.typ": acronyms
 #import "glossary.typ": glossary
 
 #let metadata = yaml("metadata.yaml")
@@ -8,7 +9,7 @@
 #show: hdm-thesis.with(
     metadata, datetime.today(),
     bib: bibliography("sources.bib"),
-    glossary: glossary)
+    glossary: glossary, acronyms: acronyms)
 
 
 = Introduction

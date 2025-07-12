@@ -9,7 +9,7 @@
     logo: image("./assets/hdm_logo.svg"),
     bib: none,
     bib-style: "chicago-notes",
-    glossary: none,
+    glossary: none, acronyms: none
 ) = {
     assert(metadata != none, message: "Metadata missing")
     let data = metadata.data
@@ -68,6 +68,7 @@
     )
     set page(numbering: none)
     set heading(numbering: none, outlined: false)
+    register-glossary(acronyms)
     register-glossary(glossary)
 
     titlepage(metadata, logo, date)
@@ -89,6 +90,11 @@
     set heading(outlined: true)
     show outline: set heading(outlined: true)
     counter(page).update(1)
+    pagebreak(weak: true)
+
+    // Acronyms
+    heading(resources.Acronyms)
+    print-glossary(acronyms)
     pagebreak(weak: true)
 
     // Glossary
