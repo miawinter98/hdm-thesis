@@ -1,10 +1,6 @@
 #let abstract_de = [
-    = Kurzfassung
-
-    German Abstract Here
+    German Abstract Here (or set to none to remove)
 ]
 #let abstract_en = [
-    = Abstract
-
-    English Abstract Here
+    English Abstract Here (or set to none to remove)
 ]

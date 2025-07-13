@@ -13,6 +13,7 @@ de:
         Tables: "Tabellenverzeichnis"
         Glossary: "Glossar"
         Acronyms: "Abkürzungen"
+        Abstract: "Kurzfassung"
 en:
     titlepage:
         SubmittedBy: "submitted by\n"
@@ -28,3 +29,4 @@ en:
         Tables: "Tables"
         Glossary: "Glossary"
         Acronyms: "Acronyms"
+        Abstract: "Abstract"
