@@ -9,7 +9,7 @@
     logo: image("./assets/hdm_logo.svg"),
     bib: none,
     bib-style: "chicago-notes",
-    glossary: none, acronyms: none
+    glossary: none, acronyms: none, abstract_de: none, abstract_en: none
 ) = {
     assert(metadata != none, message: "Metadata missing")
     let data = metadata.data
@@ -81,8 +81,18 @@
         layout.Location, date)
     pagebreak()
 
+    // Abstracts
+    if abstract_de != none {
+        show: abstract_de
+    }
+    if abstract_en != none {
+        pagebreak(weak: true)
+        show: abstract_en
+    }
+
     set par(justify: false)
 
+    pagebreak(weak: true)
     show outline: set heading(bookmarked: true)
     outline()
 
