@@ -1,5 +1,5 @@
 #import "@preview/hdm-thesis:0.1.0": hdm-thesis
-#import "@preview/glossarium:0.5.4": gls, glspl
+#import "@preview/glossarium:0.5.7": gls, glspl
 
 #import "abstract.typ": abstract_de, abstract_en
 #import "acronyms.typ": acronyms
