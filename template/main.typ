@@ -26,13 +26,14 @@
 
 #lorem(150)
 
+#pagebreak(weak: true)
 = Another Heading
 
 #lorem(300)
 
 == Sub Heading
 
-#lorem(100)
+#lorem(150)
 
 = Functions
 

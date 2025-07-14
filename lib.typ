@@ -18,10 +18,25 @@
 
     show: make-glossary
 
-    set par(leading: 0.6em, spacing: 1.2em)
+    // Typography
+    set par(leading: 0.8em, spacing: 1.5em)
     set text(lang: metadata.lang, font: layout.fonts.body, size: 12pt)
-    show heading: set text(font: layout.fonts.heading)
-    show heading: set block(below: 1.3em)
+    // https://github.com/typst/typst/discussions/2919#discussioncomment-7831644
+    // "The defaults are 1.4em for level 1, 1.2em for level 2, and 1em for everything else"
+    // default font is 12pt, with Major Second we get:
+    // h4: 17pt
+    // h3: 19pt
+    // h2: 21pt
+    // h1: 24pt
+    show heading: set par(leading: 0.5em)
+    show heading: set text(lang: metadata.lang, font: layout.fonts.heading)
+    show heading: set block(spacing: 0pt, above: 1.5em, below: 1em)
+    set heading(hanging-indent: 0pt)
+    //
+    show heading.where(level: 4): set text(size: 17pt)
+    show heading.where(level: 3): set text(size: 19pt)
+    show heading.where(level: 2): set text(size: 21pt)
+    show heading.where(level: 1): set text(size: 24pt)
 
     set document(
         title: data.title,
@@ -39,14 +54,24 @@
             let pageCounter = counter(page)
             let current = here().page()
             let firstPage = current < 3
-            let headingArray = query(selector(heading).after(here()));
+            let previousHeadings  = query(selector(heading.where(level: 1)).before(here()))
+            let currentHeadings   = query(selector(heading.where(level: 1))).filter(h => here().page() == h.location().page())
+
+            let renderHeading(body) = {
+                stack(dir: ltr,
+                        block()[
+                            #show heading: set text(size: 16pt, weight: "semibold")
+                            #body
+                        ],
+                        align(right, logo))
+            }
 
             if not firstPage {
                 set image(height: 2.5em)
-                if not headingArray.len() == 0 and headingArray.first().numbering != none {
-                    stack(dir: ltr,
-                        text(headingArray.first(), size: 0.8em, weight: "regular"),
-                        align(right, logo))
+                if currentHeadings.len() > 0 and currentHeadings.first().numbering == "1.1." {
+                    renderHeading(currentHeadings.first())
+                } else if previousHeadings.len() > 0 and previousHeadings.last().numbering == "1.1." {
+                    renderHeading(previousHeadings.last())
                 } else {
                     align(right, logo)
                 }
@@ -132,7 +157,13 @@
     counter(page).update(1)
     pagebreak()
 
+    // <CONTENT>
+    set par(justify: true)
+
     content
+
+    set par(justify: false)
+    // </CONTENT>
 
     pagebreak(weak: true)
     counter(page).update(1)
