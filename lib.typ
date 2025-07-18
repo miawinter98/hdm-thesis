@@ -75,7 +75,7 @@
                 } else {
                     align(right, logo)
                 }
-                line(length: 100%)
+                line(length: 100%, stroke: 0.25pt + black)
             }
         },
         footer: context {
@@ -84,7 +84,7 @@
             let firstPage = current < 3
 
             if not firstPage {
-                line(length: 100%)
+                line(length: 100%, stroke: 0.25pt + black)
                 if page.numbering != none {
                     align(center, counter(page).display())
                 }
