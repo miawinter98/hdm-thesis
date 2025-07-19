@@ -108,14 +108,14 @@
 
     // Abstracts
     let all_resources = yaml("resources.yaml")
-    if abstract_de != none {
-        heading(all_resources.at("de").headings.Abstract, bookmarked: true)
-        show: abstract_de
-    }
     if abstract_en != none {
-        pagebreak(weak: true)
         heading(all_resources.at("en").headings.Abstract, bookmarked: true)
         show: abstract_en
+    }
+    if abstract_de != none {
+        pagebreak(weak: true)
+        heading(all_resources.at("de").headings.Abstract, bookmarked: true)
+        show: abstract_de
     }
 
     set par(justify: false)
