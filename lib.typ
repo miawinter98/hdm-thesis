@@ -51,46 +51,45 @@
             x: 2.5cm,
         ),
         header: context {
-            let headingCandidates = selector(heading.where(level: 1)).or(heading.where(level: 2))
-
-            let pageCounter = counter(page)
             let current = here().page()
-            let firstPage = current < 3
-            let previousHeadings  = query(headingCandidates.before(here()))
-            let currentHeadings   = query(headingCandidates).filter(h => here().page() == h.location().page())
 
-            let renderHeading(body) = {
-                stack(dir: ltr,
+            if current > 2 {
+                // headings on even pages (if available)
+                if calc.even(current) {
+                    let headingCandidates = heading.where(level: 1)
+
+                    let previousHeadings = query(headingCandidates.before(here()))
+                    let currentHeadings  = query(headingCandidates).filter(h => current == h.location().page())
+
+                    let renderHeading(body) = {
                         block()[
                             #show heading: set text(size: 16pt, weight: "semibold")
                             #body
-                        ],
-                        align(right, [#if(calc.odd(current)) {logo}]))
-            }
+                        ]
+                    }
 
-            if not firstPage {
-                set image(height: 2.5em)
-                // check if we have headings on page and if the first one is numbered
-                // and thus should appear in the header
-                if calc.even(current) and currentHeadings.len() > 0 and currentHeadings.first().numbering == "1.1." {
-                    renderHeading(currentHeadings.first())
-                // first check if there are no current headings, bc if there are that means
-                // the current page has an un-numbered heading and should not have a header-heading
-                } else if calc.even(current) and currentHeadings.len() < 1 and previousHeadings.len() > 0 and previousHeadings.last().numbering == "1.1." {
-                    renderHeading(previousHeadings.last())
-                // No headings, just logo (on odd pages)
-                } else if(calc.odd(current)) {
+                    // check if we have headings on page and if the first one is numbered
+                    // and thus should appear in the header
+                    if currentHeadings.len() > 0 {
+                        if currentHeadings.first().numbering == "1.1." {
+                            renderHeading(currentHeadings.first())
+                        }
+                    } else if previousHeadings.len() > 0 and previousHeadings.last().numbering == "1.1." {
+                        renderHeading(previousHeadings.last())
+                    }
+
+                // No headings, just logo on odd pages
+                } else {
+                    set image(height: 2.5em)
                     align(right, logo)
                 }
+
                 line(length: 100%, stroke: 0.25pt + black)
             }
         },
         footer: context {
-            let pageCounter = counter(page)
             let current = here().page()
-            let firstPage = current < 3
-
-            if not firstPage {
+            if current > 2 {
                 line(length: 100%, stroke: 0.25pt + black)
                 if page.numbering != none {
                     align(center, counter(page).display())
