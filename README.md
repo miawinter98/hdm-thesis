@@ -12,8 +12,10 @@ In the main file, you will need this:
 
 ```typst
 #import "@preview/hdm-thesis:0.1.0": hdm-thesis
-#import "@preview/glossarium:0.5.4": gls, glspl
+#import "@preview/glossarium:0.5.7": gls, glspl
 
+#import "abstract.typ": abstract_de, abstract_en
+#import "acronyms.typ": acronyms
 #import "glossary.typ": glossary
 
 #let metadata = yaml("metadata.yaml")
@@ -21,7 +23,8 @@ In the main file, you will need this:
 #show: hdm-thesis.with(
     metadata, datetime(year: 2025, month: 8, day: 1),
     bib: bibliography("sources.bib"),
-    glossary: glossary)
+    glossary: glossary, acronyms: acronyms,
+    abstract_de: abstract_de, abstract_en: abstract_en)
 ```
 
 You should edit the date to be your submission date, or just use datetime.today() (the default in the template).
