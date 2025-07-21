@@ -51,11 +51,13 @@
             x: 2.5cm,
         ),
         header: context {
+            let headingCandidates = selector(heading.where(level: 1)).or(heading.where(level: 2))
+
             let pageCounter = counter(page)
             let current = here().page()
             let firstPage = current < 3
-            let previousHeadings  = query(selector(heading.where(level: 1)).before(here()))
-            let currentHeadings   = query(selector(heading.where(level: 1))).filter(h => here().page() == h.location().page())
+            let previousHeadings  = query(headingCandidates.before(here()))
+            let currentHeadings   = query(headingCandidates).filter(h => here().page() == h.location().page())
 
             let renderHeading(body) = {
                 stack(dir: ltr,
@@ -63,16 +65,21 @@
                             #show heading: set text(size: 16pt, weight: "semibold")
                             #body
                         ],
-                        align(right, logo))
+                        align(right, [#if(calc.odd(current)) {logo}]))
             }
 
             if not firstPage {
                 set image(height: 2.5em)
-                if currentHeadings.len() > 0 and currentHeadings.first().numbering == "1.1." {
+                // check if we have headings on page and if the first one is numbered
+                // and thus should appear in the header
+                if calc.even(current) and currentHeadings.len() > 0 and currentHeadings.first().numbering == "1.1." {
                     renderHeading(currentHeadings.first())
-                } else if previousHeadings.len() > 0 and previousHeadings.last().numbering == "1.1." {
+                // first check if there are no current headings, bc if there are that means
+                // the current page has an un-numbered heading and should not have a header-heading
+                } else if calc.even(current) and currentHeadings.len() < 1 and previousHeadings.len() > 0 and previousHeadings.last().numbering == "1.1." {
                     renderHeading(previousHeadings.last())
-                } else {
+                // No headings, just logo (on odd pages)
+                } else if(calc.odd(current)) {
                     align(right, logo)
                 }
                 line(length: 100%, stroke: 0.25pt + black)
