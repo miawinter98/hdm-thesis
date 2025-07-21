@@ -9,7 +9,7 @@
     logo: image("./assets/hdm_logo.svg"),
     bib: none,
     bib-style: "chicago-notes",
-    glossary: none, acronyms: none, abstract_de: none, abstract_en: none
+    glossary: none, acronyms: none, abstract-de: none, abstract-en: none
 ) = {
     assert(metadata != none, message: "Metadata missing")
     let data = metadata.data
@@ -115,14 +115,14 @@
 
     // Abstracts
     let all_resources = yaml("resources.yaml")
-    if abstract_en != none {
+    if abstract-en != none {
         heading(all_resources.at("en").headings.Abstract, bookmarked: true)
-        show: abstract_en
+        show: abstract-en
     }
-    if abstract_de != none {
+    if abstract-de != none {
         pagebreak(weak: true)
         heading(all_resources.at("de").headings.Abstract, bookmarked: true)
-        show: abstract_de
+        show: abstract-de
     }
 
     set par(justify: false)

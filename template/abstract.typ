@@ -1,6 +1,6 @@
-#let abstract_de = [
+#let abstract-de = [
     German Abstract Here (or set to none to remove)
 ]
-#let abstract_en = [
+#let abstract-en = [
     English Abstract Here (or set to none to remove)
 ]

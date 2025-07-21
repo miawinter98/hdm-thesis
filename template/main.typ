@@ -1,7 +1,7 @@
 #import "@preview/hdm-thesis:0.1.0": hdm-thesis
 #import "@preview/glossarium:0.5.7": gls, glspl
 
-#import "abstract.typ": abstract_de, abstract_en
+#import "abstract.typ": abstract-de, abstract-en
 #import "acronyms.typ": acronyms
 #import "glossary.typ": glossary
 
@@ -11,7 +11,7 @@
     metadata, datetime.today(),
     bib: bibliography("sources.bib"),
     glossary: glossary, acronyms: acronyms,
-    abstract_de: abstract_de, abstract_en: abstract_en)
+    abstract-de: abstract-de, abstract-en: abstract-en)
 
 
 = Introduction
