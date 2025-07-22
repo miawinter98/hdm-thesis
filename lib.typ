@@ -3,7 +3,7 @@
 #import "content/titlepage.typ": titlepage
 #import "content/declaration-of-authorship.typ": declaration-of-authorship
 
-#let hdm-thesis(
+#let hdm-stuttgart(
     metadata, date, content,
 
     logo: image("./assets/hdm_logo.svg"),

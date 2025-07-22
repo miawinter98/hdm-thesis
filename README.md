@@ -11,7 +11,7 @@ You can add basic information such as language, contributors, title, etc. in the
 In the main file, you will need this:
 
 ```typst
-#import "@preview/hdm-thesis:0.1.0": hdm-thesis
+#import "@preview/hdm-stuttgart:0.1.0": hdm-stuttgart
 #import "@preview/glossarium:0.5.7": gls, glspl
 
 #import "abstract.typ": abstract_de, abstract_en
@@ -20,7 +20,7 @@ In the main file, you will need this:
 
 #let metadata = yaml("metadata.yaml")
 
-#show: hdm-thesis.with(
+#show: hdm-stuttgart.with(
     metadata, datetime(year: 2025, month: 8, day: 1),
     bib: bibliography("sources.bib"),
     glossary: glossary, acronyms: acronyms,
