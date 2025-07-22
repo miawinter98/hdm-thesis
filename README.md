@@ -30,3 +30,16 @@ In the main file, you will need this:
 You should edit the date to be your submission date, or just use datetime.today() (the default in the template).
 
 All content you add after that is considered part of the thesis and will be added to the Table of Contents.
+
+## Logo
+
+The template supports adding the HdM logo (or some other logo) to the first page and onto the header of odd pages. If you are a member of the University you can find the HdM Logo in the [Intranet](https://www.hdm-stuttgart.de/intranet/services/corporate_design) with your student credentials.
+
+The Logo can be added using the `logo` attribute:
+
+```
+#show: hdm-stuttgart.with(
+    metadata, datetime(year: 2025, month: 8, day: 1),
+    bib: bibliography("sources.bib"),
+    logo: image("assets/hdm_logo.svg"))
+```

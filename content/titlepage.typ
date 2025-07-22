@@ -13,7 +13,11 @@
 
   [
     #set image(height: 10em)
-    #logo
+    #if (logo == none) {
+      v(10em)
+    } else {
+      logo
+    }
   ]
 
   v(1.5em)

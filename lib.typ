@@ -6,7 +6,7 @@
 #let hdm-stuttgart(
     metadata, date, content,
 
-    logo: image("./assets/hdm_logo.svg"),
+    logo: none,
     bib: none,
     bib-style: "chicago-notes",
     glossary: none, acronyms: none, abstract-de: none, abstract-en: none
