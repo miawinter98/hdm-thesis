@@ -47,7 +47,11 @@ Like this: #gls("kuleuven")
 
 == Figures
 
-#figure(caption: "Image Example", image(width: 4cm, "assets/example.png", height: 5em))
+#figure(
+    caption: [
+        Image Example (#link("https://www.freepik.com/author/freepik/icons/kawaii-lineal_46#from_element=resource_detail")[Icon by Freepik])
+    ],
+    image(width: 4cm, "assets/example.png"))
 
 == Tables
 
