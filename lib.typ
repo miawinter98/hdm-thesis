@@ -138,12 +138,12 @@
 
     // Acronyms
     heading(resources.Acronyms)
-    print-glossary(acronyms)
+    print-glossary(acronyms, disable-back-references: true)
     pagebreak(weak: true)
 
     // Glossary
     heading(resources.Glossary)
-    print-glossary(glossary)
+    print-glossary(glossary, disable-back-references: true)
     pagebreak(weak: true)
 
     // Figures
