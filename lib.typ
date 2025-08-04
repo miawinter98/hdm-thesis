@@ -10,7 +10,8 @@
     bib: none,
     bib-style: "chicago-notes",
     glossary: none, acronyms: none, abstract-de: none, abstract-en: none,
-    acknowledgements: none, declaration-of-authorship: true
+    acknowledgements: none, declaration-of-authorship: true,
+    table-outline: true, figure-outline: true
 ) = {
     assert(metadata != none, message: "Metadata missing")
     let data = metadata.data
@@ -100,8 +101,12 @@
     )
     set page(numbering: none)
     set heading(numbering: none, outlined: false)
-    register-glossary(acronyms)
-    register-glossary(glossary)
+    if acronyms != none {
+        register-glossary(acronyms)
+    }
+    if glossary != none {
+        register-glossary(glossary)
+    }
 
     titlepage(metadata, logo, date)
 
@@ -146,26 +151,34 @@
     pagebreak(weak: true)
 
     // Acronyms
-    heading(resources.Acronyms)
-    print-glossary(acronyms, disable-back-references: true)
-    pagebreak(weak: true)
+    if acronyms != none {
+        heading(resources.Acronyms)
+        print-glossary(acronyms, disable-back-references: true)
+        pagebreak(weak: true)
+    }
 
     // Glossary
-    heading(resources.Glossary)
-    print-glossary(glossary, disable-back-references: true)
-    pagebreak(weak: true)
+    if glossary != none {
+        heading(resources.Glossary)
+        print-glossary(glossary, disable-back-references: true)
+        pagebreak(weak: true)
+    }
 
     // Figures
-    outline(
-        title: resources.Figures,
-        target: figure.where(kind: image))
-    pagebreak(weak: true)
+    if figure-outline {
+        outline(
+            title: resources.Figures,
+            target: figure.where(kind: image))
+        pagebreak(weak: true)
+    }
 
-    // Figures
-    outline(
-        title: resources.Tables,
-        target: figure.where(kind: table))
-    pagebreak(weak: true)
+    // Figures - Tables
+    if table-outline {
+        outline(
+            title: resources.Tables,
+            target: figure.where(kind: table))
+        pagebreak(weak: true)
+    }
 
     set heading(numbering: "1.1.")
     set page(numbering: "1 / 1")
