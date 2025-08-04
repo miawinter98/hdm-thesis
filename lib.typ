@@ -1,7 +1,7 @@
 #import "@preview/glossarium:0.5.7": make-glossary, register-glossary, print-glossary, gls, glspl
 
 #import "content/titlepage.typ": titlepage
-#import "content/declaration-of-authorship.typ": declaration-of-authorship
+#import "content/declaration-of-authorship.typ": declaration-of-authorship-page
 
 #let pretty-hdm-thesis(
     metadata, date, content,
@@ -9,7 +9,8 @@
     logo: none,
     bib: none,
     bib-style: "chicago-notes",
-    glossary: none, acronyms: none, abstract-de: none, abstract-en: none
+    glossary: none, acronyms: none, abstract-de: none, abstract-en: none,
+    acknowledgements: none, declaration-of-authorship: true
 ) = {
     assert(metadata != none, message: "Metadata missing")
     let data = metadata.data
@@ -106,11 +107,20 @@
 
     set par(justify: true)
 
-    declaration-of-authorship(
-        data.authors.map(a => a.Name),
-        data.title + ": " + data.subtitle,
-        layout.Location, date)
-    pagebreak()
+    if declaration-of-authorship {
+        declaration-of-authorship-page(
+            data.authors.map(a => a.Name),
+            data.title + ": " + data.subtitle,
+            layout.Location, date)
+        pagebreak()
+    }
+
+    if acknowledgements != none {
+        heading(resources.Acknowledgements)
+
+        acknowledgements
+        pagebreak(weak: true)
+    }
 
     // Abstracts
     let all_resources = yaml("resources.yaml")

@@ -9,6 +9,7 @@ de:
         SecondSupervisor: "Zweitprüfer"
         ExternalSupervisor: "Praxisbetreuer"
     headings:
+        Acknowledgements: "Danksagungen"
         Figures: "Abbildungsverzeichnis"
         Tables: "Tabellenverzeichnis"
         Glossary: "Glossar"
@@ -25,6 +26,7 @@ en:
         SecondSupervisor: "Second Supervisor"
         ExternalSupervisor: "External Supervisor"
     headings:
+        Acknowledgements: "Acknowledgements"
         Figures: "Figures"
         Tables: "Tables"
         Glossary: "Glossary"
