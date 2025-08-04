@@ -119,7 +119,6 @@
         show: abstract-en
     }
     if abstract-de != none {
-        pagebreak(weak: true)
         heading(all_resources.at("de").headings.Abstract, bookmarked: true)
         show: abstract-de
     }
