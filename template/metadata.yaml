@@ -1,12 +1,14 @@
 lang: en # en or de
 
 layout:
-    Type: bachelor
+    Type: bachelor # bachelor or master
     Study: Medieninformatik
-    Degree: Bachelor of Science
+    Degree: Bachelor of Science # Or Bachelor of Arts, Bachelor of Engineering
     Institute: Hochschule der Medien Stuttgart
     Location: Stuttgart
     fonts:
+        # if you use a font not on your system or part of typst you need to add the
+        # font file in your project (it will be discovered by typst automatically then)
         body: New Computer Modern
         heading: Roboto
 
