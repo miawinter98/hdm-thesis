@@ -1,6 +1,6 @@
 [package]
 name = "pretty-hdm-thesis"
-version = "0.1.0"
+version = "0.1.1"
 entrypoint = "lib.typ"
 authors = ["Mia Rose Winter <https://github.com/miawinter98>"]
 license = "MIT"

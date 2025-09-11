@@ -1,4 +1,4 @@
-#import "@preview/pretty-hdm-thesis:0.1.0": pretty-hdm-thesis
+#import "@preview/pretty-hdm-thesis:0.1.1": pretty-hdm-thesis
 #import "@preview/glossarium:0.5.7": gls, glspl
 
 #import "abstract.typ": abstract-de, abstract-en
