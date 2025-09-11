@@ -7,11 +7,24 @@
 
 #let metadata = yaml("metadata.yaml")
 
+#let acknowledgements = [
+    I'd like to thank caffeine for getting me through many many MANY nights writing all of this
+]
+
 #show: pretty-hdm-thesis.with(
-    metadata, datetime.today(),
+    metadata, // see metadata.yaml
+    datetime.today(), // or `datetime(year: 2025, month: 8, day: 4),` if you have a specific submission date already
     bib: bibliography("sources.bib"),
+    // optional citation style (default is "chicago-notes"): `bib-style: "turabian-fullnote-8",`
+
+    // the following features are all optional or can be disabled
     glossary: glossary, acronyms: acronyms,
-    abstract-de: abstract-de, abstract-en: abstract-en)
+    abstract-de: abstract-de, abstract-en: abstract-en, acknowledgements: acknowledgements,
+    declaration-of-authorship: true, table-outline: true, figure-outline: true
+
+    // you can get the HdM Logo or another visual on various pages using the `logo` parameter
+    // see the readme for more information
+    )
 
 
 = Introduction
@@ -43,6 +56,7 @@ Citing a thing here @iso18004
 
 == Referencing Glossary Items
 
+// only available if you provide a glossary/acronyms to pretty-hdm-thesis that contains this key
 Like this: #gls("kuleuven")
 
 == Figures
