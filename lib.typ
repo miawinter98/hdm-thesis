@@ -116,7 +116,7 @@
         declaration-of-authorship-page(
             data.authors.map(a => a.Name),
             data.title + ": " + data.subtitle,
-            layout.Location, date)
+            layout.Location, date, layout.Type)
         pagebreak()
     }
 

@@ -1,4 +1,4 @@
-#let declaration-of-authorship-page(authors, title, location, date) = [
+#let declaration-of-authorship-page(authors, title, location, date, type) = [
   = Ehrenwörtliche Erklärung
 
   #if authors.len() == 1 { "Hiermit versichere ich" } else { "Hiermit versichern wir" },
@@ -8,7 +8,15 @@
 
   selbstständig und ohne fremde Hilfe verfasst und keine anderen als die angegebenen Hilfsmittel benutzt habe. Die Stellen der Arbeit, die dem Wortlaut oder dem Sinn nach anderen Werken entnommen wurden, sind in jedem Fall unter Angabe der Quelle kenntlich gemacht. Ebenso sind alle Stellen, die mit Hilfe eines KI-basierten Schreibwerkzeugs erstellt oder überarbeitet wurden, kenntlich gemacht. Die Arbeit ist noch nicht veröffentlicht oder in anderer Form als Prüfungsleistung vorgelegt worden.
 
-  Ich habe die Bedeutung der ehrenwörtlichen Versicherung und die prüfungsrechtlichen Folgen (§ 24 Abs. 2 Bachelor-SPO) einer unrichtigen oder unvollständigen ehrenwörtlichen Versicherung zur Kenntnis genommen.
+  Ich habe die Bedeutung der ehrenwörtlichen Versicherung und die prüfungsrechtlichen Folgen
+  #if type == "master" [
+    (§ 23 Abs. 2 Master-SPO (Vollzeit))
+  ] else if type == "bachelor" [
+    (§ 24 Abs. 2 Bachelor-SPO)
+  ] else {
+      panik("type needs to be set to 'bachelor' or 'master'")
+  }
+  einer unrichtigen oder unvollständigen ehrenwörtlichen Versicherung zur Kenntnis genommen.
 
   #v(0.5cm)
   #grid(
