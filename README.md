@@ -11,7 +11,7 @@ You can add basic information such as language, contributors, title, etc. in the
 In the main file, you will need this:
 
 ```typst
-#import "@preview/pretty-hdm-thesis:0.1.0": pretty-hdm-thesis
+#import "@preview/pretty-hdm-thesis:0.1.1": pretty-hdm-thesis
 #import "@preview/glossarium:0.5.7": gls, glspl
 
 #import "abstract.typ": abstract_de, abstract_en
@@ -27,7 +27,7 @@ In the main file, you will need this:
     bib-style: "chicago-notes",
     glossary: glossary, acronyms: acronyms,
     abstract-de: abstract-de, abstract-en: abstract-en,
-    )
+)
 ```
 
 You should edit the date to be your submission date, or just use datetime.today() (the default in the template).
