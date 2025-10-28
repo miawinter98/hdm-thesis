@@ -1,4 +1,4 @@
-#import "@preview/pretty-hdm-thesis:0.1.1": pretty-hdm-thesis
+#import "@preview/pretty-hdm-thesis:0.1.2": pretty-hdm-thesis
 #import "@preview/glossarium:0.5.9": gls, glspl
 
 #import "abstract.typ": abstract-de, abstract-en
@@ -20,10 +20,15 @@
     // the following features are all optional or can be disabled
     glossary: glossary, acronyms: acronyms,
     abstract-de: abstract-de, abstract-en: abstract-en, acknowledgements: acknowledgements,
-    declaration-of-authorship: true, table-outline: true, figure-outline: true
+    declaration-of-authorship: true, table-outline: true, figure-outline: true,
 
     // you can get the HdM Logo or another visual on various pages using the `logo` parameter
     // see the readme for more information
+
+    // optional appendix, can be before or after bilbiography
+    // APA *recommends* the appendix to be the last section, while books
+    // generally choose refernces/bibliography to be after everything else
+    appendix: read("/appendix.typ"), appendix-last: false,
     )
 
 

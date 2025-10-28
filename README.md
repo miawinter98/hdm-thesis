@@ -27,6 +27,7 @@ In the main file, you will need this:
     bib-style: "chicago-notes",
     glossary: glossary, acronyms: acronyms,
     abstract-de: abstract-de, abstract-en: abstract-en,
+    appendix: read("/appendix.typ"), appendix-last: false,
 )
 ```
 

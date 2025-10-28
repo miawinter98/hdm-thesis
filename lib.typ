@@ -11,7 +11,8 @@
     bib-style: "chicago-notes",
     glossary: none, acronyms: none, abstract-de: none, abstract-en: none,
     acknowledgements: none, declaration-of-authorship: true,
-    table-outline: true, figure-outline: true
+    table-outline: true, figure-outline: true,
+    appendix: none, appendix-last: false,
 ) = {
     assert(metadata != none, message: "Metadata missing")
     let data = metadata.data
@@ -193,12 +194,27 @@
     set par(justify: false)
     // </CONTENT>
 
-    pagebreak(weak: true)
-    counter(page).update(1)
-    set page(numbering: "a")
+    if appendix != none and appendix-last == false {
+        pagebreak(weak: true)
+        counter(page).update(1)
+        set page(numbering: "i")
+        set heading(numbering: none)
+        eval(appendix, mode: "markup")
+    }
 
     if bib != none {
+        pagebreak(weak: true)
+        counter(page).update(1)
+        set page(numbering: "a")
         set bibliography(style: bib-style)
         bib
+    }
+
+    if appendix != none and appendix-last == true {
+        pagebreak(weak: true)
+        counter(page).update(1)
+        set page(numbering: "i")
+        set heading(numbering: none)
+        eval(appendix, mode: "markup")
     }
 }
